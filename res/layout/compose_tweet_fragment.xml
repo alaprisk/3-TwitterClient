@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_gravity="center"
+    android:gravity="center"
+	android:background="#FAFAD2"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tvRemainingChar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etTweetText"
+        android:layout_centerHorizontal="true"
+        android:textSize="12sp"
+        android:text="100 characters remaining" />
+
+    <Button
+        android:id="@+id/btnPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvRemainingChar"
+        android:layout_centerHorizontal="true"
+        android:background="#FFFFFF"
+        android:text="@string/btn_post" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:onClick="cancelPosting"
+        android:textSize="10sp"
+        android:text="@string/btn_cancel" />
+
+    <EditText
+        android:id="@+id/etTweetText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btnCancel"
+        android:maxLength="100"
+        android:gravity="center"
+        android:ems="10"
+        android:hint="@string/et_new_tweet_hint" />
+
+    
+    
+</RelativeLayout>
