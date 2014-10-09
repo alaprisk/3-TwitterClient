@@ -38,12 +38,7 @@ public class TwitterClient extends OAuthBaseClient {
 		String apiUrl = getApiUrl("statuses/home_timeline.json");
 		RequestParams params = new RequestParams();
 		params.put("since_id", "1");
-		
-		// If we want to get data ... https://dev.twitter.com/rest/reference/get/statuses/home_timeline
-		// If you have atleast one param ... pass param or else pass null here.
 		client.get(apiUrl, params, handler);
-		
-		// If we want to post data ... https://dev.twitter.com/rest/reference/post/statuses/destroy/%3Aid		
 	}
 	
 	public void getMoreHomeTimeline(String max_id, AsyncHttpResponseHandler handler)
@@ -80,7 +75,64 @@ public class TwitterClient extends OAuthBaseClient {
 		params.put("status", result);
 		client.post(apiUrl, params, handler);
 	}
+
+	public void getMentionsTimeline(AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("statuses/mentions_timeline.json");
+		//RequestParams params = new RequestParams();
+		//params.put("since_id", "1");
+		client.get(apiUrl, null, handler);		
+	}
+
+	public void getMoreMentionsTimeline(String maxId, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("statuses/mentions_timeline.json");
+		RequestParams params = new RequestParams();
+		params.put("max_id", maxId);
+		client.get(apiUrl, null, handler);	
+	}	
 	
+	
+	public void getUserTimeline(AsyncHttpResponseHandler handler){
+		String apiUrl = getApiUrl("statuses/user_timeline.json");
+		client.get(apiUrl, null,handler);
+	}	
+	
+	public void getMyInfo(AsyncHttpResponseHandler handler){
+		String apiUrl = getApiUrl("account/verify_credentials.json");
+		client.get(apiUrl, null,handler);
+	}
+	
+    public void getOtherUserInfo(String screenName, AsyncHttpResponseHandler handler) {
+    	String apiUrl = getApiUrl("users/show.json");
+    	RequestParams params = new RequestParams();
+    	params.put("screen_name", screenName);
+    	client.get(apiUrl, params,handler);
+    }
+
+	public void getOtherUserTimeline(String screenName, String maxId,
+			AsyncHttpResponseHandler handler) {
+    	String apiUrl = getApiUrl("statuses/user_timeline.json");
+    	RequestParams params = new RequestParams();
+    	params.put("screen_name", screenName);
+    	if(maxId == null)
+    	{	
+	    	if(screenName != null) {
+	        	client.get(apiUrl, params,handler);
+	        	} else {
+	            	client.get(apiUrl, null,handler);
+	        }
+    	}
+    	else {
+        	params.put("max_id", maxId);
+	    	if(screenName != null) {
+	        	client.get(apiUrl, params,handler);
+	        	} else {
+	            	client.get(apiUrl, null,handler);
+	        }
+    	}
+    		
+	}
+
+
 	
 	// CHANGE THIS
 	// DEFINE METHODS for different API endpoints here

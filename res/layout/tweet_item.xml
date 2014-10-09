@@ -2,22 +2,30 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
+	
+    
     <ImageView
         android:id="@+id/ivProfileImage"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:clickable="true"
         android:src="@drawable/ic_launcher" />
 
     <TextView
         android:id="@+id/tvUserName"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/ivProfileImage"
-        android:text="@string/foo_label" />
+		android:paddingLeft="5dp"
+        android:textSize="12sp"
+        android:paddingTop="5sp"		
+		android:text="@string/foo_label" />
 
     <TextView
         android:id="@+id/tvBody"
@@ -25,6 +33,9 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvUserName"
         android:layout_below="@+id/tvUserName"
+        android:textSize="12sp"
+        android:paddingLeft="5dp"
+        android:paddingBottom="5dp"
         android:text="This is the tweet body" />
 
     <TextView
@@ -33,6 +44,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:paddingRight="5dp"
+        android:textSize="11sp"
+        android:paddingTop="5sp"		
+        android:alpha="0.5"
         android:text="" />
 
 </RelativeLayout>

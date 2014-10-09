@@ -11,7 +11,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    
 
     <application
         android:name=".TwitterApplication"
@@ -48,6 +47,10 @@
         <activity
             android:name=".TimelineActivity"
             android:label="@string/title_activity_timeline" >
+        </activity>
+        <activity
+            android:name=".ProfileActivity"
+            android:label="@string/title_activity_profile" >
         </activity>
     </application>
 

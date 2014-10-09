@@ -6,13 +6,16 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.codepath.apps.basictwitter.R;
+import com.codepath.rishi.basictwitter.fragments.HomeTimelineFragment;
 
 public class ComposeTweetDialog extends DialogFragment{
 
@@ -50,6 +53,17 @@ public class ComposeTweetDialog extends DialogFragment{
 		btnPost = (Button) view.findViewById(R.id.btnPost);
 		btnCancel = (Button) view.findViewById(R.id.btnCancel);
 
+		
+		btnCancel.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				//Toast.makeText(getActivity(), "Clicked cancel button", Toast.LENGTH_SHORT).show();
+				getDialog().dismiss();
+			}
+		});
+		
 		tweet_text.addTextChangedListener(new TextWatcher() {
 	  		  
 	 		   public void afterTextChanged(Editable s) {
@@ -75,7 +89,11 @@ public class ComposeTweetDialog extends DialogFragment{
 		btnPost.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	ComposeTweetDialogListener result = (ComposeTweetDialogListener) getActivity();
+            	
+            	//HomeTimelineFragment fragment = v.findViewById(R.id.fragment_timeline);
+            	
             	result.finish(tweet_text.getText().toString());
+				Toast.makeText(getActivity(), "Clicked post button", Toast.LENGTH_SHORT).show();
             	dismiss();
             }
         });
@@ -90,11 +108,6 @@ public class ComposeTweetDialog extends DialogFragment{
 						WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 		
 		return view;
-	}
-	
-	
-	void cancelPosting(View v){
-		this.dismiss();
 	}
 	
 	

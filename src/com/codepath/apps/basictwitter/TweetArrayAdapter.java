@@ -6,9 +6,12 @@ import java.util.List;
 import java.util.Locale;
 
 import android.content.Context;
+import android.content.Intent;
+import android.text.Html;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -51,17 +54,43 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 		// Populate views with tweet data.
 		imageLoader.displayImage(tweet.getUser().getProfileImageUrl(), ivProfileImage);
 		
-		tvUserName.setText(tweet.getUser().getScreenName());
+		tvUserName.setText(Html.fromHtml("<b>" + tweet.getUser().getName() + "  </b><font size='1' color='#373737'>"
+				+ "@"+tweet.getUser().getScreenName() + "</font>"));
 		tvBody.setText(tweet.getBody());
 		
 		tvTime.setText(getRelativeTimestamp(tweet.getCreatedAt()));
 		
+		setUpImageClickListener(ivProfileImage, tweet.getUser().getScreenName());
+		
+		
+        /*v.setOnClickListener(new OnClickListener() {
+        	@Override
+        	public void onClick(View v) {
+        		
+        	}
+		
+        });*/
+		
 		return v;	
+	}
+	
+	private void setUpImageClickListener(ImageView ivProfileImage,
+			final String screenName) {
+		ivProfileImage.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getContext(),ProfileActivity.class);
+				i.putExtra("screen_name", screenName.substring(0));
+				getContext().startActivity(i);
+				
+			}
+		});		
 	}
 
 	private CharSequence getRelativeTimestamp(String createdAt) {
 
-		String format = "EEEE MMM dd HH:mm:ss zzz yyyy";
+		String format = "EEEEE MMM dd HH:mm:s zzz yyyy";
 		SimpleDateFormat date = new SimpleDateFormat(format, Locale.ENGLISH);
 		date.setLenient(true);
 		String relativeDate = "";

@@ -32,7 +32,6 @@
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:onClick="cancelPosting"
         android:textSize="10sp"
         android:text="@string/btn_cancel" />
 

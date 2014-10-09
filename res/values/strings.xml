@@ -11,5 +11,6 @@
     <string name="btn_post">Post</string>
     <string name="btn_cancel">X</string>
     <string name="et_new_tweet_hint">Enter your text here !</string>
+    <string name="title_activity_profile">ProfileActivity</string>
 
 </resources>

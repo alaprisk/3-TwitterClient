@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
         android:id="@+id/miCompose"
-        android:icon="@drawable/ic_compose"
+        android:icon="@drawable/ic_compose_too"
         android:showAsAction="always"
         android:title="Compose">
     </item>
